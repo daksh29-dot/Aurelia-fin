@@ -1,0 +1,79 @@
+/*
+  AURELIA design tokens.
+  Signature: tabular monospace numerals for all financial data, and a thin
+  --ai-accent left-rule on any AI-interpreted content block — a functional
+  signature that encodes the FACT vs AI-INTERPRETATION distinction the
+  product itself requires (see docs/security.md), not decoration.
+*/
+
+:root {
+  --font-ui: "Aurelia Sans", -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+  --font-data: "Aurelia Mono", "IBM Plex Mono", ui-monospace, monospace;
+
+  --radius: 6px;
+  --blur: 16px;
+}
+
+/* Dark — default */
+[data-theme="dark"] {
+  --background: #0a0b0d;
+  --surface-glass: rgba(255, 255, 255, 0.045);
+  --surface-glass-hover: rgba(255, 255, 255, 0.075);
+  --border-subtle: rgba(255, 255, 255, 0.09);
+
+  --text-primary: #e9e7e2;
+  --text-secondary: #9b9a97;
+  --text-muted: #676663;
+
+  --positive: #4f9e7a;
+  --negative: #c2564f;
+  --warning: #c7a233;
+  --ai-accent: #6f8fbf;
+
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+}
+
+/* Light */
+[data-theme="light"] {
+  --background: #edeeeb;
+  --surface-glass: rgba(10, 11, 13, 0.035);
+  --surface-glass-hover: rgba(10, 11, 13, 0.065);
+  --border-subtle: rgba(10, 11, 13, 0.1);
+
+  --text-primary: #17181a;
+  --text-secondary: #55565a;
+  --text-muted: #85868a;
+
+  --positive: #2f7a56;
+  --negative: #a83f38;
+  --warning: #97781c;
+  --ai-accent: #3f5f92;
+
+  --shadow: 0 8px 32px rgba(10, 11, 13, 0.1);
+}
+
+body {
+  background: var(--background);
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+}
+
+/* every numeral in the product renders tabular-mono */
+.figure,
+.font-mono {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+::selection {
+  background: var(--ai-accent);
+  color: var(--background);
+}
